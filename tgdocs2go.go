@@ -169,7 +169,7 @@ func formatType(s string) string {
 
     switch s {
     case "Integer":
-        return "int"
+        return "int64"
     case "Float":
         return "float64"
     case "String":
