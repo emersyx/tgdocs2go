@@ -8,13 +8,13 @@ import(
     "net/http"
 )
 
-type TypeMember struct {
+type typeMember struct {
     Field       string
     Type        string
     Description string
 }
 
-func (tm TypeMember) String() string {
+func (tm typeMember) String() string {
     return fmt.Sprintf("Field = %s, Type = %s, Description = %s", tm.Field, tm.Type, tm.Description)
 }
 
@@ -34,7 +34,7 @@ func main() {
     tokenizer := html.NewTokenizer(resp.Body)
 
     // all members of the desired type
-    var tms []TypeMember
+    var tms []typeMember
 
     // search for an <a> tag with href starting with a #
     done := false
@@ -65,8 +65,8 @@ func main() {
     formatTypeMembers(tms);
 }
 
-func parseTable(tokenizer *html.Tokenizer) []TypeMember {
-    tm := make([]TypeMember, 0)
+func parseTable(tokenizer *html.Tokenizer) []typeMember {
+    tm := make([]typeMember, 0)
 
     // keep track of the first row which is a table header
     firstRowFound := false
@@ -95,9 +95,9 @@ func parseTable(tokenizer *html.Tokenizer) []TypeMember {
     }
 }
 
-func parseRow(tokenizer *html.Tokenizer) TypeMember {
+func parseRow(tokenizer *html.Tokenizer) typeMember {
     // store the type member data
-    tm := TypeMember{}
+    tm := typeMember{}
 
     // keep track of the member
     tdidx := 0
@@ -132,7 +132,7 @@ func parseRow(tokenizer *html.Tokenizer) TypeMember {
     return tm
 }
 
-func formatTypeMembers(tms []TypeMember) {
+func formatTypeMembers(tms []typeMember) {
     fmt.Printf("// https://core.telegram.org/bots/api#%s\n", os.Args[1])
     fmt.Printf("type %s struct {\n", os.Args[1])
 
