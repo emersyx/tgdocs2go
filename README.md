@@ -1,4 +1,5 @@
-# tgdocs2go
+# tgdocs2go [![Build Status](https://travis-ci.org/emersyx/tgdocs2go.svg?branch=master)](https://travis-ci.org/emersyx/tgdocs2go)
+
 Simple tool to parse telegram documentation and generate go code.
 
 For example, in order to generate a struct for the [User][1] type, one needs to run
